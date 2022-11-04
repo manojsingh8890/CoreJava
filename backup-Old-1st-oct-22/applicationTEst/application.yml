@@ -1,0 +1,78 @@
+error:
+  code:
+    unauthorized: 401
+    forbidden: 403
+    internal_error: 500
+    bad_request: 400
+    no_device_found: 204
+    incorrect_device_count: 204
+    no_algosec_enabled_device_found: 204
+    no_algosec_actionable_work_found: 204
+  message:
+    bad_request: Bad Request
+    unauthorized: Unauthorised
+    forbidden: Forbidden
+    internal_error: Internal Error
+    invalid_ip_address: Invalid Ip Address
+    invalid_pcr_change_request_details: Invalid JSON Input
+    no_device_found: No device found
+    incorrect_device_count: Incorrect device count
+    no_algosec_enabled_device_found: No algosec enabled device found
+    no_algosec_actionable_work_found: No algosec work found
+    invalid_policy_update_source: Could not resolve '%s' as Source {IP, Network, ID or Object Name} in Policy Update tab
+    invalid_policy_update_destination: Could not resolve '%s' as Destination {IP, Network, ID or Object Name} in Policy Update tab
+    invalid_port: Not a valid port '%s' specified in service '%s'
+    invalid_protocol: Not a valid protocol '%s' specified in service '%s'
+    invalid_service: Service '%s' is invalid or does not exist
+    object_not_found_on_device_for_rule: object '%s' does not exist on device '%s'
+    duplicate_object_name_for_same_device: "Duplicate object names for same device. Object name: '%s'."
+    invalid_object_definition: Invalid Object definition for '%s'
+    could_not_resolve_object: Could not resolve '%s' as object
+    no_temp_policy_changes_found: No temporary policy create change ids available for session id %s
+    temp_create_changes_incomplete: Temporary changes are still not complete for session id %s
+    fetched_ticket_details_invalid_or_incomplete: Fetched Ticket Details Invalid Or Incomplete
+    invalid_rule_id_does_not_exist: Rule id '%s' does not exist on device '%s'
+  http_status:
+    unauthorized: 401
+    forbidden: 403
+    internal_error: 500
+    bad_request: 400
+    no_device_found: 204
+    incorrect_device_count: 204
+    no_algosec_enabled_device_found: 204
+    no_algosec_actionable_work_found: 204
+app:
+  service:
+    url:
+      algosec_fireflow_authentication_url: test_url1
+      algosec_fireflow_change_request_url: test_url2
+      device_enablement_values_url: test_url3
+      device_url_with_hostname: test_url4
+      device_mapping_url: test_url5
+      find_network_objects_by_device_name: test_url6
+      find_service_objects_by_remdedy_device_id:: test_url7
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS
+  endpoints:
+    web:
+      exposure:
+        include: "prometheus,health,info"
+server:
+  port: 3333
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    show-sql: true
+algosec-integration-ms:
+  mss-datasource:
+    jdbc-url: jdbc:h2:mem:temp_test_db
+cleanup_threshold_hours: 24
+task_scheduler_thread_pool_size: 10
+network_protocol_list: tcp,udp,icmp
+policy_update_request_template: SOC Standard Request Template
+policy_rule_removal_request_template: Soc Rule Removal Request
+object_update_rquest_template: "135: Object Change Multi Device Request"
