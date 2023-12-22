@@ -21,6 +21,7 @@ public class CallInterfaceDefaultMethod implements b1{
 		a1 a = new a1() {};
 		a.foo();
 		
+		new CallInterfaceDefaultMethod().foo();
 		
 	}
 	

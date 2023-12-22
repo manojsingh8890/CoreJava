@@ -61,7 +61,7 @@ public class ListOfObjectToMap {
 		list.add(e);
 		
 		
-		Map<String,List<EmployeeD>> m =list.stream().collect(Collectors.toMap(x -> x.getDepartment(), x -> {
+		/*Map<String,List<EmployeeD>> m =list.stream().collect(Collectors.toMap(x -> x.getDepartment(), x -> {
 			List<EmployeeD> l = new ArrayList();
 			l.add(x);
 			return l;
@@ -73,7 +73,7 @@ public class ListOfObjectToMap {
 	    }));
 		
 		
-		m.forEach((x, y) -> System.out.println(x +" , "+y.size()));
+		m.forEach((x, y) -> System.out.println(x +" , "+y.size()));*/
 		
 		Map<String,List<EmployeeD>> m2 = list.stream().collect(Collectors.groupingBy(x -> x.getDepartment(),Collectors.mapping(x -> x, Collectors.toList())));
 		

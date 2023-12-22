@@ -23,6 +23,8 @@ public class Java8Test {
 		/*List<Integer> list = Arrays.stream(arr)        
                 .boxed()          // Stream<Integer>
                 .collect(Collectors.toList());
+                
+                
 		list = list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
 		
 		System.out.println(list.get(2)); */

@@ -16,7 +16,7 @@ public class StringCharCountc {
 		          .range(0, ch.length)
 		          .mapToObj(i -> ch[i]);
 		
-		Map<Character, Integer> map = myStreamOfCharacters.collect(Collectors.toMap(x -> x, x -> {
+		/*Map<Character, Integer> map = myStreamOfCharacters.collect(Collectors.toMap(x -> x, x -> {
 										return 1;
 									  },
 								       (x, y) ->{
@@ -27,6 +27,10 @@ public class StringCharCountc {
 		
 									
 		map.forEach((x, y) -> System.out.println(x +","+ y));
+		*/
+		Map<Character, Long> counts =
+				 myStreamOfCharacters.collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+		   counts.forEach((x, y) -> System.out.println(x +""+ y));
 		
 		
 		

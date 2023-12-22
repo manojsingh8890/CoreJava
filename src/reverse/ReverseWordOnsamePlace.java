@@ -27,14 +27,16 @@ public class ReverseWordOnsamePlace {
 		
 	}
 	
-	public static char[] reverse(char[] raw, int first, int i) {
-		
-		for (int l = first, h = i-1; l < h; l++, h--)
+	public static char[] reverse(char[] raw, int first, int last) {
+		last--;
+		while(first < last )
         {
             // swap values at `l` and `h`
-            char temp = raw[l];
-            raw[l] = raw[h];
-            raw[h] = temp;
+            char temp = raw[first];
+            raw[first] = raw[last];
+            raw[last] = temp;
+            first ++;
+            last--;
         }
 		
 		return raw;

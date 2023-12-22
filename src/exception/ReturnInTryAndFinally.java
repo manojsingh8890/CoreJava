@@ -9,11 +9,11 @@ public class ReturnInTryAndFinally {
 		try {
 			return 8;
 		}catch(Exception e) {
-			//return 0;
+		   return 0;
 		}finally {
 			return 3;
 		}
-	   // return 7;
+	 // return 7;
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

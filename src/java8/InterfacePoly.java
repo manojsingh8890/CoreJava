@@ -22,10 +22,14 @@ public class InterfacePoly implements Printable, Showable {
 
 	public static void main(String args[]) {
 		Showable obj = new InterfacePoly();
-		//obj.print();
 		obj.show();
 	}
 
+	@Override
+	public void show1() {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public void show() {
@@ -34,12 +38,5 @@ public class InterfacePoly implements Printable, Showable {
 	}
 
 
-	@Override
-	public void show1() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	
+
 }

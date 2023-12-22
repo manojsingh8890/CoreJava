@@ -51,6 +51,9 @@ public class SortMap {
 			 LinkedHashMap::new
 		));
 		
+		Map<Employee, String> map5 = map.entrySet().stream().sorted(Entry.comparingByKey((x, x1) -> x.getId() - x1.getId()))
+				.collect(Collectors.toMap(x -> x.getKey(), x -> x.getValue()));
+		
 		
 		Map<Employee, String> map7 = map.entrySet().stream().sorted(Entry.comparingByKey((x, x1) -> {
 			if(x.getId() == x1.getId()) {
