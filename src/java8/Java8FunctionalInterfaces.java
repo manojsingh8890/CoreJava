@@ -23,7 +23,7 @@ public class Java8FunctionalInterfaces {
 		Predicate<Integer> p = (i) -> (i > -10) && (i < 10);
 		System.out.println(p.test(9));
 		
-		
+		//filter
 		
 		
 		
@@ -54,6 +54,7 @@ public class Java8FunctionalInterfaces {
 		Consumer<String> c = s -> System.out.println(s); 
 		c.accept("I consume data but don't return anything"); 
 		
+		// foreach
 		
 		
 		
