@@ -11,23 +11,17 @@ public class ThreadProdConsexample {
         final PC pc = new PC();
  
         // Create producer thread
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run()
-            {
+        Thread t1 = new Thread(()->{
                 try {
                     pc.produce();
                 }
                 catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }
         });
  
         // Create consumer thread
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run()
+        Thread t2 = new Thread(() ->
             {
                 try {
                     pc.consume();
@@ -35,8 +29,7 @@ public class ThreadProdConsexample {
                 catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }
-        });
+            });
  
         // Start both threads
         t1.start();

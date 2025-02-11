@@ -22,7 +22,7 @@ public class ArrayList8RemoveIf {
          //Creating another arraylist  
          ArrayList<String> al2=new ArrayList<String>();    
          al2.add("Ravi");    
-         al2.add("Hanumat");    
+         al2.add("Hanumat"); 
          //Adding new elements to arraylist  
          al.addAll(al2);  
          System.out.println("Updated list : "+al);   

@@ -20,14 +20,19 @@ public class Java8Test {
 		
 		int arr[] = {100,89,76,200,100,34,56};
 		List<Integer> list = IntStream.range(0, arr.length).mapToObj(x -> arr[x]).collect(Collectors.toList());
-		/*List<Integer> list = Arrays.stream(arr)        
-                .boxed()          // Stream<Integer>
-                .collect(Collectors.toList());
+		List<Integer> list7 = Arrays.stream(arr).boxed().collect(Collectors.toList());
+		
+		//List<Integer> list2 = Arrays.stream(arr).boxed().collect(Collectors.toList());
                 
                 
 		list = list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
 		
-		System.out.println(list.get(2)); */
+		
+		  int a[] = { 3, 6, 32, 1, 8, 5, 31, 22 };
+		  int sumValue = Arrays.stream(a).boxed().collect(Collectors.summingInt(x -> x));
+		  System.out.println(sumValue);
+		
+		/*System.out.println(list.get(2)); */
 		
 		/*String str= "I    am Manoj";
 		String str1 = "";
@@ -66,8 +71,8 @@ public class Java8Test {
 		}
 		return revStr;
 	} */
-		System.out.print(2.0-1.1);
-		System.out.print(", ");
-		System.out.print(2.0f-1.1f);
+	//	System.out.print(2.0-1.1);
+	//	System.out.print(", ");
+	//	System.out.print(2.0f-1.1f);
 	}
 }
