@@ -503,3 +503,345 @@ Map<String, Long> mapObject = Arrays.stream(s.split(""))
 Input: String s = "string data to count each character";
 Output: {s=1, t=5, r=3, i=1, n=2, g=1,  =5, d=1, a=5, o=2, c=4, u=1, e=2, h=2}
 Here, we come to the end of Java 8 coding interview questions and answers. These questions are very common in all the Java 8 interviews, so save and practice the programs accordingly.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+1- Write a Java Program to find whether a number is prime or not.
+
+import java.util.stream.IntStream;
+
+//Prime numbers are natural numbers that are divisible by only 1 and the number itself
+public class FindPrimeNumber {
+
+    public static void main(String[] args) {
+        isPrime(9);
+        isPrime(17);
+        isPrime(1);
+        isPrime(0);
+        isPrime(-5);
+    }
+    
+    private static void isPrime(int num) {
+        if (num <= 1) {
+            System.out.println(num + " is not a prime number");
+            return;
+        }
+    
+        boolean isPrime = IntStream.rangeClosed(2, (int) Math.sqrt(num))
+                                   .noneMatch(x -> num % x == 0);
+    
+        if (isPrime) {
+            System.out.println(num + " is a prime number");
+        } else {
+            System.out.println(num + " is not a prime number");
+        }
+    }
+2-Write a Java Program to check Armstrong numbers.
+
+//Armstrong number is the number in any given number base, which forms the total of the same number,
+//when each of its digits is raised to the power of the number of digits in the number.
+public class FindArmstrongNumber {
+
+ public static void main(String[] args) {
+  System.out.println("Is Armstrong Number : " + isArmstrongNumberByJava8(371));
+ }
+ private static boolean isArmstrongNumberByJava8(int num) {
+  if (num < 0) {
+     return false;
+    }
+  int numDigits = String.valueOf(num).length();
+
+  int sum = String.valueOf(num).chars().map(Character::getNumericValue)
+    .map(digit -> (int) Math.pow(digit, numDigits)).sum();
+
+  return sum==num;
+ }
+}
+3- Write a program to print duplicate numbers.
+
+public class FindDuplicateNumber {
+
+ public static void main(String[] args) {
+  int a[] = { 1, 4, 5, 2, 12, 34, 2, 11 };
+  System.out.println("Duplicate number by java 1.8 : " + findDuplicateNumberByJava1_8(a));
+ }
+ private static int findDuplicateNumberByJava1_8(int[] a) {
+  Map<Integer, Long> map = Arrays.stream(a).boxed()
+    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+  int duplicate = map.keySet().stream().filter(x -> map.get(x) > 1).findFirst().orElse(0);
+
+  // If there have more then one duplicate then used this
+ map.keySet().stream().filter(x -> map.get(x) > 1).forEach(System.out::println);
+  return duplicate;
+ }
+}
+4-Write a program to find whether a string or number is palindrome or not.
+
+//A Palindromic number is a number (such as 16461) that 
+// remains the same when its digits are reversed.
+public class FindPalindromeNumber {
+ public static void main(String[] args) {
+  System.out.println(" Is Palindrome No : " + isPalindromeNumberByJava8(16461));
+ }
+
+ private static boolean isPalindromeNumberByJava8(int n) {
+  String value = String.valueOf(n);
+  int len = value.length();
+  boolean isPalindromeNumber = IntStream.range(0, len / 2)
+    .anyMatch(index -> value.charAt(index) == value.charAt(len - index - 1));
+  return isPalindromeNumber;
+ }
+}
+5- Write a program to print duplicate strings.
+
+public class FindDuplicateInString {
+
+ public static void main(String[] args) {
+  String input = "JavaAPI";
+
+  List<Character> duplicateList= input.chars().mapToObj(x -> Character.toUpperCase((char) x))
+    .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+    .entrySet().stream().filter(x -> x.getValue() > 1L).map(Entry::getKey).collect(Collectors.toList());
+
+  System.out.println(duplicateListj);
+ }
+}
+6- Write a program to print the Fibonacci Series.
+
+//The Fibonacci series is the sequence of numbers, 
+// where every number is the sum of the preceding two numbers.
+public class FindFibonacciSeries {
+
+ public static void main(String[] args) {
+  findFibonacciSeriesByJava8();
+ }
+
+ private static void findFibonacciSeriesByJava8() {
+  Stream.iterate(new int[] { 0, 1 }, f -> new int[] { f[1], f[0] + f[1] }).limit(10).map(f -> f[0])
+    .forEach(System.out::println);
+ }
+}
+7- Write a program to find min and max numbers in the array.
+
+public class FindMinAndMaxInArray {
+
+ public static void main(String[] args) {
+
+  int a[] = { 2, 3, 1, 22, 11, 33, 5 };
+
+// Find the max number
+  int max = Arrays.stream(a).boxed().max(Integer::compareTo).get();
+
+  System.out.println("Max Value by java 8 : "+max);
+  findMaxValue(a);
+
+  // Find the min number
+  int min = Arrays.stream(a).boxed().max(Comparator.reverseOrder()).get();
+
+  System.out.println("Min Value by java 8 : "+min);
+  findMinValue(a);
+
+ }
+}
+8-Write a program to find Min And Max In an Array Without using the max function
+
+public class FindMinAndMaxInArrayWithoutMaxFunction {
+ public static void main(String[] args) {
+  int arr[] = { 2, 3, 1, 22, 11, 33, 5 };
+  int max = Arrays.stream(arr).boxed().reduce(Integer.MIN_VALUE, (a, b) -> Integer.max(a, b)).intValue();
+  int min = Arrays.stream(arr).boxed().reduce(Integer.MAX_VALUE, (a, b) -> Integer.min(a, b)).intValue();
+  System.out.println("Max : " + max + "  Min : " + min);
+
+  System.out.println();
+  // Using the method reference;
+  int max1 = Arrays.stream(arr).boxed().reduce(Integer::max).get();
+  int min1 = Arrays.stream(arr).boxed().reduce(Integer::min).get();
+  System.out.println("Max : " + max1 + "  Min : " + min1);
+ }
+}
+9-Write a program to find the second-highest number in an array.
+
+public class FindSecondHighehestNumber {
+
+ public static void main(String[] args) {
+  int a[] = { 3, 6, 32, 1, 8, 5, 31, 22 };
+
+  int secundMax = Arrays.stream(a).boxed().sorted(Comparator.reverseOrder()).skip(1).findAny().get();
+  System.out.println(secundMax);
+ 
+ }
+}
+10- Write a program to Find the Second Lowest Number.
+
+public class FindSecondLowestNumber {
+
+ public static void main(String[] args) {
+  int a[] = { 3, 6, 32, 1, 8, 5, 31, 22, 2 };
+  int secundMin = Arrays.stream(a).boxed().sorted().skip(1).findAny().get();
+  System.out.println(secundMin);
+ }
+}
+11- Write a program to print the First Not Repeated Char in string.
+
+public class FirstNotRepetedChar {
+
+ public static void main(String[] args) {
+  String input = "Java Stream API is very good concept";
+
+  char firstNotRepetedChar = input.chars().mapToObj(x -> Character.toUpperCase((char) x))//converting the object format
+    .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))// find duplicate freq in linkedHashMap
+    .entrySet().stream().filter(x -> x.getValue() == 1L).map(x -> x.getKey()).findFirst().get();//filtering the freq which is not first time
+
+  System.out.println("First non repeated char  : " + firstNotRepetedChar);
+
+ }
+}
+12- Write a program to a Flattering list of objects.
+
+public class FlatteringList {
+
+ public static void main(String[] args) {
+  List<Integer> oddList = Arrays.asList(1, 3, 5, 7, 9, 11);
+  List<Integer> evenList = Arrays.asList(2, 4, 6, 8, 10);
+  List<List<Integer>> listOfList = Arrays.asList(oddList, evenList);
+  System.out.println(listOfList);
+  List<Integer> flatList = listOfList.stream().flatMap(list -> list.stream()).collect(Collectors.toList());
+
+  System.out.println(flatList);
+ }
+}
+13- Write a program to find the majority element in an array.
+
+///Find the majority element in the array. A majority element in an array A[] of size n is 
+// an element that appears more than n/2 times.
+public class MajorityElementInStream {
+
+ public static void main(String[] args) {
+  int majorityArray[] = { 5, 3, 2, 1, 2, 4, 3, 2, 2, 6, 2, 3, 2, 2, 2 };
+  int notMajorityArray[] = { 3, 6, 32, 1, 8, 5, 31, 22 };
+  printMajorityElementByJava8(majorityArray);
+  printMajorityElementByJava8(notMajorityArray);
+ }
+
+ private static void printMajorityElementByJava8(int a[]) {
+  int majorityElement = Arrays.stream(a).boxed()
+    .collect(Collectors.groupingBy(Function.identity(), HashMap::new, Collectors.counting())).entrySet()
+    .stream().filter(k -> k.getValue() >= a.length / 2).map(Entry::getKey).findFirst().orElse(0);
+  System.out.println(majorityElement);
+ }
+}
+14- Write a program to Print Even and Odd Numbers.
+
+public class PrintEvenOddNumber {
+
+ public static void main(String[] args) {
+
+  printEvenNumberByJava8();
+  printOddNumberByJava8();
+
+ }
+
+ private static void printEvenNumberByJava8() {
+
+  IntStream.rangeClosed(0, 10).filter(x -> x % 2 == 0).forEach(System.out::println);
+
+ }
+
+ private static void printOddNumberByJava8() {
+
+  IntStream.rangeClosed(0, 10).filter(x -> x % 2 != 0).forEach(System.out::println);
+
+ }
+}
+15- Write a program to sort the 2 arrays in ascending order.
+
+public class Sort2ArrayInAssendingOrder {
+
+ public static void main(String[] args) {
+  int i[] = { 4, 5, 13, 22 };
+  int j[] = { 0, 9, 3, 7, 12, 11 };
+  List<Integer> sortedList= Stream.concat(Arrays.stream(i).boxed(), Arrays.stream(j).boxed()).sorted()
+    .collect(Collectors.toList());
+  System.out.println(sortedList);
+ }
+}
+16-Write a program to sort the array.
+
+public class SortArrayInReverseOrder {
+
+ public static void main(String[] args) {
+  int a[] = { 3, 6, 32, 1, 8, 5, 31, 22 };
+
+  List<Integer> newArra = Arrays.stream(a).boxed().sorted().collect(Collectors.toList());
+
+  System.out.println(newArra);
+
+  Arrays.sort(a);
+  System.out.println(Arrays.toString(a));
+ }
+}
+17-Write a program to sum an array.
+
+public class SumArray {
+
+ public static void main(String[] args) {
+  int a[] = { 3, 6, 32, 1, 8, 5, 31, 22 };
+  int sumValue = Arrays.stream(a).boxed().collect(Collectors.summingInt(Integer::intValue));
+  System.out.println(sumValue);
+ }
+}
+18-Write a program to sum an array without using the sum method.
+
+public class SumArray {
+
+ public static void main(String[] args) {
+  int a[] = { 3, 6, 32, 1, 8, 5, 31, 22 };
+  int sum = Arrays.stream(a).boxed().reduce(0, (x, y) -> x + y).intValue();
+  System.out.println(sum);
+ }
+}
+19- Write a program to append char in char ex-input- {A, B, C} output->[A_X, B_Y, C_Z].
+
+public class AppendCharInChar {
+
+ public static void main(String[] args) {
+  Stream<Character> charStream = Stream.of('A', 'B', 'C');
+  charStream.forEach(ch -> {
+   char newChar = (char) (ch + 23);
+   System.out.println(ch + "_" + newChar);
+  });
+ }
+}
+20-Write a program to find the only duplicate count list in the List.
+
+public class PrintOnlyDuplicateCountList {
+ public static void main(String[] args) {
+  List<String> names = Arrays.asList("Java", "Spring", "JPA", "Java", "Cloud", "JPA");
+  Map<String, Long> namesCount = names.stream().filter(x -> Collections.frequency(names, x) > 1)
+    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+  System.out.println(namesCount);
+ }
+}
