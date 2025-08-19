@@ -56,7 +56,7 @@ public class SortMap {
 		map.put(emp1, "8");
 		map.put(emp2, "8");
 		//map.put(emp4, "8");
-		Map<Employee, String> map4 = map.entrySet().stream().sorted(Entry.comparingByKey((x, x1) -> ((Integer)x.getId()).compareTo((Integer)x1.getId())))
+		Map<Employee, String> map4 = map.entrySet().stream().sorted(Entry.comparingByKey((x, x1) -> Integer.compare(x.getId(), x1.getId())))
 				.collect(Collectors.toMap(x -> x.getKey(), x -> x.getValue(), (oldValue, newValue) -> oldValue, 
 			 LinkedHashMap::new
 		));

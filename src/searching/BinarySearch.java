@@ -8,6 +8,7 @@ public class BinarySearch
   {
     int c, first, last, middle, n, search, array[];
  
+    // O(log n)
     Scanner in = new Scanner(System.in);
     System.out.println("Enter number of elements");
     n = in.nextInt(); 

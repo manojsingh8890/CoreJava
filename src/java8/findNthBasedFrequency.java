@@ -15,8 +15,8 @@ public class findNthBasedFrequency {
 		// TODO Auto-generated method stub
 		List<Integer> arr = Arrays.asList(0,0,1,1,2,2,2,3,3,3,4,4,4,4);
 		
-		long ab = arr.stream().collect(Collectors.groupingBy(Function.identity() , Collectors.counting()))
-			      .entrySet().stream()
+		Map<Integer, Long> mapOfFrequency = arr.stream().collect(Collectors.groupingBy(Function.identity() , Collectors.counting()));
+		  long ab =  mapOfFrequency.entrySet().stream()
 			      .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).map(x -> x.getValue()).distinct()
 			      .skip(2).findFirst().get();
 		System.out.println(ab);    
@@ -26,22 +26,19 @@ public class findNthBasedFrequency {
 		 */
 		
 		
-		arr.stream().collect(Collectors.groupingBy(Function.identity() , Collectors.counting()))
+		mapOfFrequency
 		.entrySet().stream().filter(x -> x.getValue() == ab)
-		.peek(System.out::println)
 		.sorted(Entry.comparingByKey(Comparator.reverseOrder()))
-		.peek(s -> System.out.println("s : " + s))
 		.count();
 		
 		
-		Map.Entry<Integer,Long> xy = arr.stream().collect(Collectors.groupingBy(Function.identity() , Collectors.counting()))
+		Map.Entry<Integer,Long> xy = mapOfFrequency
 				.entrySet().stream().filter(x -> x.getValue() == ab)
-				.sorted(Entry.comparingByKey(Comparator.reverseOrder()))
 				.findFirst().get();
 		
 		System.out.println(xy.getKey() +" : "+ xy.getValue()); 
 		
-		Map.Entry<Integer,Long> a = arr.stream().collect(Collectors.groupingBy(Function.identity() , Collectors.counting()))
+		Map.Entry<Integer,Long> a = mapOfFrequency
 			      .entrySet().stream()
 			      .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
 			     // .map(Map.Entry::getKey)

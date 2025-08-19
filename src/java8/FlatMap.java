@@ -20,5 +20,4 @@ public class FlatMap {
 		    
 		    System.out.println(namesFlatStream);
 		}
-
 }

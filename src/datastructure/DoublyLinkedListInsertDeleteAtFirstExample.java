@@ -60,11 +60,14 @@ class DoublyLinkedList {
            DoublyNode newNode = new DoublyNode(data); // creation of new node.
            if (first == null) {// means LinkedList is empty.
                   last = newNode; //  newNode <--- last
+                  newNode.next = first; // newNode --> old first
+                  first = newNode; // first --> newNode
            }else {
                   first.previous = newNode; // newNode <-- old first
+                  newNode.next = first; // newNode --> old first
+                  first = newNode; // first --> newNode
            }
-           newNode.next = first; // newNode --> old first
-           first = newNode; // first --> newNode
+           
     }
  
     /**

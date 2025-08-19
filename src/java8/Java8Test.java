@@ -30,6 +30,8 @@ public class Java8Test {
 		
 		  int a[] = { 3, 6, 32, 1, 8, 5, 31, 22 };
 		  int sumValue = Arrays.stream(a).boxed().collect(Collectors.summingInt(x -> x));
+		 int d = Arrays.stream(a).reduce((x,y) -> x+y).getAsInt();
+		 System.out.println("d: " + d);
 		  System.out.println(sumValue);
 		
 		/*System.out.println(list.get(2)); */

@@ -7,6 +7,11 @@ public class BubbleSort {
     int n, c, d, swap;
     Scanner in = new Scanner(System.in);
  
+    // Bubble sort :
+   /* Worst Case Time Complexity [ Big-O ]: O(n2)
+    Average Time Complexity [Big-theta]: O(n2)
+    Best Case Time Complexity [Big-omega]: O(n)
+    Space Complexity: O(1) */
     System.out.println("Input number of integers to sort");
     n = in.nextInt();
  

@@ -8,6 +8,7 @@ public class LinearSearch
   {
     int c, n, search, array[];
  
+    // O(n)
     Scanner in = new Scanner(System.in);
     System.out.println("Enter number of elements");
     n = in.nextInt(); 

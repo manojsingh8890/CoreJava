@@ -1,9 +1,21 @@
 package reverse;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class ReverseWordOnsamePlace {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		String[] x4 = "India is my %^& Country".split("(?=[\\s+])");
+		
+		for(int i = 0; i < x4.length; i++) {
+			x4[i] = new StringBuilder(x4[i]).reverse().toString();
+		}
+		String nn= Arrays.stream(x4).collect(Collectors.joining());
+		System.out.println("India is my %^& Country");
+		System.out.println(nn);
 		
 		char[] str = "  India is my %^& Country ".toCharArray();
 		int i = 0;

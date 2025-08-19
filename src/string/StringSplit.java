@@ -4,7 +4,18 @@ public class StringSplit {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+	
+		/*
+		.  :Any character
+		\d : Any digits, [0-9]
+		\D : Any non-digit, [^0-9]
+		\s : Whitespace character, [\t\n\x0B\f\r]
+		\S :Non-whitespace character, [^\s]
+		\w :Word character, [a-zA-Z_0-9]
+		\W :Non-word character, [^\w]
+		\b :Word boundary
+		\B :Non -Word boundary
+		*/
 	// ------------------------------------------------------------------------
 		
 		var s = "apple-banana-cherry";

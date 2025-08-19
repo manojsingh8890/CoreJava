@@ -1,6 +1,7 @@
 package java8;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 class Employee4 {
     String name;
@@ -36,19 +37,33 @@ public class comparing {
             new Employee4("Sophia", "Marketing", 75000),
             new Employee4("Mason", "Finance", 85000)
         );
-
-        employees.sort(
-            Comparator.comparing(Employee4::getDepartment)
-                      .thenComparing(Employee4::getSalary)
-        );
         
-       
+       System.out.println( "MAx : " + employees.stream().max((x,y) -> Double.compare(x.getSalary(), y.getSalary())).get());
+        
+        employees.stream().collect(Collectors.groupingBy(x -> x.getDepartment(), Collectors.mapping(x -> x.getSalary(), Collectors.toList())))
+        .entrySet().stream().collect(Collectors.toMap(x -> x.getKey(), y -> y.getValue().stream().collect(Collectors.averagingDouble(x -> x))));
+        
+        employees.stream().collect(Collectors.groupingBy(x -> x.getDepartment(), Collectors.mapping(x -> x.getSalary(), Collectors.toList())))
+        .entrySet().stream()
+        .forEach(x -> System.out.println("dep : " + x.getKey() + " Avarage : " + x.getValue().stream().mapToDouble(y -> y).average().getAsDouble()));
+        
+        
+        employees.sort(Comparator.comparing(Employee4::getDepartment).thenComparing(Employee4::getSalary));
+        
+        
         employees.stream()
         .sorted(Comparator.comparing(Employee4::getDepartment)
                 .thenComparing(Employee4::getSalary))
         .map(Employee4::getSalary)
         .forEach(System.out::println);
+        
+      double bbb=  employees.stream()
+        .sorted(Comparator.comparing(Employee4::getDepartment)
+                .thenComparing(Employee4::getSalary))
+        .map(Employee4::getSalary).collect(Collectors.averagingDouble(x-> x));
 
+      System.out.println("bbb : "+ bbb);
+      
         System.out.println(employees);
         
         

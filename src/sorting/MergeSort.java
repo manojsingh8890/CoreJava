@@ -9,6 +9,13 @@ public class MergeSort {
 // Merge two sub arrays L and M into array
 void merge(int array[], int p, int q, int r) {
 
+	/*
+	 * Merge short:
+		Best Case Time Complexity [Big-omega]: O(n*log n)
+		Worst Case Time Complexity [ Big-O ]: O(n*log n)
+		Average Time Complexity [Big-theta]: O(n*log n)
+		Space Complexity: O(n)
+	 */
  int n1 = q - p + 1;
  int n2 = r - q;
 

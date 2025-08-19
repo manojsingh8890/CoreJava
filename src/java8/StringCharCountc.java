@@ -30,6 +30,8 @@ public class StringCharCountc {
 
 		// Find the max number
 		  int max = Arrays.stream(am).boxed().max((x, y) -> x.compareTo(y)).get();
+		// Find the max number
+		  int max8 = Arrays.stream(am).boxed().max(Integer::compare).get();
 		
 		/*Map<Character, Integer> map = myStreamOfCharacters.collect(Collectors.toMap(x -> x, x -> {
 										return 1;

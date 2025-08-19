@@ -1,6 +1,14 @@
 package sorting;
 
 public class InsertionSort {
+	
+	/*
+	 * Insertion short:
+		Worst Case Time Complexity [ Big-O ]: O(n2)
+		Average Time Complexity [Big-theta]: O(n2)
+		Best Case Time Complexity [Big-omega]: O(n)
+		Space Complexity: O(1)
+	 */
 	 
     public static void main(String[] args) {
          

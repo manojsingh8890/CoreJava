@@ -4,9 +4,8 @@ public class MyDeadlock {
 	 
     String str1 = "Java";
     String str2 = "UNIX";
-     
-    Thread trd1 = new Thread("My Thread 1"){
-        public void run(){
+    
+    Thread trd1 = new Thread(() ->{
             while(true){
                 synchronized(str1){
                     synchronized(str2){
@@ -14,8 +13,8 @@ public class MyDeadlock {
                     }
                 }
             }
-        }
-    };
+        
+    });
      
     Thread trd2 = new Thread("My Thread 2"){
         public void run(){

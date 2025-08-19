@@ -76,6 +76,11 @@ public class Grouping {
 		 // Get salary list 
 		 Map<String, List<Double>> mappedValue =  empList.stream().collect(Collectors.groupingBy(x -> x.department, Collectors.mapping(x -> x.salary, Collectors.toList())));
 		 mappedValue.forEach((x, y) -> System.out.println (x + "," + y.stream().max(Double::compare).get()));
+		 
+		 Map<String, List<Double>> mappedValue7 =  empList.stream().collect(Collectors.groupingBy(x -> x.department, Collectors.mapping(x -> x.salary, Collectors.toList())));
+		 mappedValue.forEach((x, y) -> System.out.println (x + "," + y.stream().mapToDouble( u -> u.doubleValue()).average()));
+		 mappedValue.entrySet().stream().collect(Collectors.toMap(x -> x.getKey(), y -> y.getValue().stream().collect(Collectors.averagingDouble(x -> x))));
+		 
 		 //Map<String, Double> max =
 		 mappedValue.entrySet().stream().map(x -> x.getValue().stream().max((x1,y1) -> x1 > y1 ? 1 : -1).get())
 				 .forEach(x -> System.out.println(x));

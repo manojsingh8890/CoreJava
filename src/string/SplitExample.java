@@ -1,5 +1,7 @@
 package string;
 
+import java.util.Arrays;
+
 public class SplitExample {
 	public static void main(String args[]) {
 		String s1 = "java string split method by javatpoint";
@@ -8,5 +10,6 @@ public class SplitExample {
 		for (String w : words) {
 			System.out.println(w);
 		}
+		Arrays.stream(words).forEach(System.out::println);
 	}
 }

@@ -171,6 +171,7 @@ import java.util.*;
 import java.util.stream.*;
 import java.util.function.Function;
 
+
 public class FirstNonRepeated{
   public static void main(String args[]) {
     String input = "Java articles are Awesome";

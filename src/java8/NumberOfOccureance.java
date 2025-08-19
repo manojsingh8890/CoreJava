@@ -13,14 +13,7 @@ public class NumberOfOccureance {
 		// TODO Auto-generated method stub
 		
 		 List<String> names = Arrays.asList("AA", "BB", "AA", "CC", "AB", "BB");
-			/*   Map<String, Integer> mapValue = names.stream().collect
-			    (Collectors.toMap(x -> x, x -> {return 1;},
-			    (x, y) ->{
-			        return x+y;
-			    },
-			    LinkedHashMap::new
-			    )); */
-			   
+			
 			   
 			//   Map<String, Long> counts =
 			//		   names.stream().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
