@@ -28,9 +28,10 @@ public class RevertStrOnUppercaseLetter {
 		System.out.println(namesFlatStream);
 		
 		
-		char[] arr = input.toLowerCase().toCharArray();
+		//char[] arr = input.toLowerCase().toCharArray();
 		
-		Stream<Character> stream = IntStream.range(0, arr.length-1).mapToObj(x -> (char)arr[x]);
+		//Stream<Character> stream = IntStream.range(0, arr.length-1).mapToObj(x -> (char)arr[x]);
+		Stream<Character> stream = input.chars().mapToObj(x -> (char)x);
 		List<Character> wovel = Arrays.asList('a','e','i','o','u');
 		stream.filter(x -> wovel.contains(x)).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
 		.forEach((x,y) -> System.out.println(x +" : " +y));
